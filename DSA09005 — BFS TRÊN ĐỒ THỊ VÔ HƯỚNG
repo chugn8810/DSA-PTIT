@@ -45,7 +45,7 @@ int main()
 			adj[x].push_back(y);
 			adj[y].push_back(x);
 		}
-		dfs(k);
+		bfs(k);
 		for (int i = 0; i < res.size(); i++)
 		{
 			cout << res[i] << " ";
