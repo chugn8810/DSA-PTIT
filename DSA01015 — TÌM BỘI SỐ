@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+int m;
+void sinh()
+{
+	queue<string> q;
+	q.push("9");
+	while (1)
+	{
+		long long x = 0;
+		string s = q.front();
+		q.pop();
+		for (auto it : s)
+		{
+			x = x * 10 + it - '0';
+		}
+		if (x % m == 0)
+		{
+			cout << x << endl;
+			return;
+		}
+		q.push(s + "0");
+		q.push(s + "9");
+	}
+}
+int main()
+{
+	int t;
+	cin >> t;
+	while (t--)
+	{
+		cin >> m;
+		sinh();
+	}
+}
