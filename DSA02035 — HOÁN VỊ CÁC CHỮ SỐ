@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+using namespace std;
+string next(string &s, vector<int> b)
+{
+    string tmp;
+    for (int j = 0; j < b.size(); j++)
+    {
+        tmp += s[b[j] - 1];
+    }
+    return tmp;
+}
+int main()
+{
+    int m, n, res = INT_MAX;
+    cin >> m >> n;
+    vector<string> a, c;
+    vector<int> b(n);
+    iota(b.begin(), b.end(), 1);
+    for (int i = 0; i < m; i++)
+    {
+        string tmp;
+        cin >> tmp;
+        a.push_back(tmp);
+        c.push_back(tmp);
+    }
+    while (1)
+    {
+        int maxx = 0, minn = INT_MAX;
+        for (int i = 0; i < m; i++)
+        {
+            int t = stoi(a[i]);
+            maxx = max(t, maxx);
+            minn = min(t, minn);
+        }
+        res = min(res, maxx - minn);
+        if (next_permutation(b.begin(), b.end()))
+        {
+            for (int i = 0; i < m; i++)
+            {
+                a[i]=next(c[i], b);
+            }
+        }
+        else
+            break;
+    }
+    cout << res << endl;
+}
